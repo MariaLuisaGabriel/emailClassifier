@@ -72,7 +72,7 @@
     }
 
     window.onload = () => {
-        const form = (document.querySelector('form.text').style.display == "none")? document.querySelector('form.arq') : document.querySelector('form.text');
+        const form = document.querySelector('form.text').style.display === 'none' ? document.querySelector('form.arq') : document.querySelector('form.text');
 
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
