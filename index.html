@@ -10,11 +10,42 @@
     <header>
         <h1>Email Classifier</h1>
     </header>
+    <nav>
+        <button> Inserir Arquivos </button>
+        <button> Escrever </button>
+    </nav>
     <main>
-        <!-- Content goes here -->
+        <h2>Inserção de Arquivos</h2>
+        <form class="arq" action="">
+            <label for="fileUpload">Selecione arquivos de email (formato .pdf ou .txt):</label>
+            <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .txt" multiple>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <form class="text" action="">
+            <label for="emailContent">Escreva o conteúdo do email:</label>
+            <textarea id="emailContent" name="emailContent" rows="10" cols="50" placeholder="Escreva o conteúdo do email aqui..."></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <span></span>
     </main>
     <footer>
-        <p>&copy; 2024 Email Classifier</p>
+        <p>&copy; 2025 Email Classifier</p>
     </footer>
 </body>
+
+<script>
+    document.querySelectorAll('nav button').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('main form').forEach(form => form.style.display = 'none');
+            if (button.textContent.includes('Inserir')) {
+                document.querySelector('form.arq').style.display = 'block';
+                document.querySelector('form.text').style.display = 'none';
+            } else {
+                document.querySelector('form.text').style.display = 'block';
+                document.querySelector('form.arq').style.display = 'none';            }
+        });
+    });
+</script>
 </html>
