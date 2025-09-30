@@ -1,6 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/classify', methods=['GET'])
 def receber_dados():
@@ -9,7 +13,6 @@ def receber_dados():
     return jsonify({
         "mensagem": f"{emailcontent}"
     })
-
 
 if __name__ == '__main__':
     app.run()
