@@ -60,13 +60,11 @@ li a:hover {
 }
 
 main {
-    flex:1;
     width: 70%;
     padding: 25px 25px;
     margin: 0px auto;
     background-color: whitesmoke;
     box-sizing: border-box;
-    text-align: justify;
 }
 
 @media (max-width: 500px) {

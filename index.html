@@ -90,8 +90,9 @@
                     const reader = new FileReader();
                     reader.onload = async (e) => {
                         emailContent += e.target.result;
-                        //const classification = await getClassification(emailContent);
-                        document.querySelector('main span').textContent = `Classificação: ${emailContent}`;
+                        const response = await getClassification(emailContent);
+                        const classification = await response.json().mensagem;
+                        document.querySelector('main span').textContent = `Classificação:\n ${classification}`;
                     };
                     reader.readAsText(file);
                 }
@@ -103,8 +104,9 @@
                     document.querySelector('main span').style.color = 'red';
                     return;
                 }
-                const classification = await getClassification(emailContent);
-                document.querySelector('main span').textContent = `Classificação: ${classification}`;
+                const response = await getClassification(emailContent);
+                const classification = await response.json().mensagem;
+                document.querySelector('main span').textContent = `Classificação:\n ${classification}`;
             }
         });
     };
