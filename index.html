@@ -16,18 +16,11 @@
     </nav>
     <main>
         <h2>Inserção de Arquivos</h2>
-        <form class="arq">
+        <form>
             <label for="fileUpload">Selecione arquivos de email (formato .pdf ou .txt):</label>
             <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .txt" multiple>
             <button type="submit">Enviar</button>
         </form>
-
-        <form class="text">
-            <label for="emailContent">Escreva o conteúdo do email:</label>
-            <textarea id="emailContent" name="emailContent" rows="10" cols="50" placeholder="Escreva o conteúdo do email aqui..."></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-
         <span></span>
     </main>
     <footer>
@@ -39,13 +32,21 @@
     
     document.querySelectorAll('nav button').forEach(button => {
         button.addEventListener('click', () => {
-            document.querySelectorAll('main form').forEach(form => form.style.display = 'none');
             if (button.textContent.includes('Inserir')) {
-                document.querySelector('form.arq').style.display = 'block';
-                document.querySelector('form.text').style.display = 'none';
+                const form = document.querySelector('form');
+                form.innerHTML = '<label for="fileUpload">Selecione arquivos de email (formato .pdf ou .txt):</label> <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .txt" multiple> <button type="submit">Enviar</button>';
+                const h2 = document.querySelector('main h2');
+                h2.textContent = 'Inserção de Arquivos';
+                const span = document.querySelector('main span');
+                span.textContent = '';
             } else {
-                document.querySelector('form.text').style.display = 'block';
-                document.querySelector('form.arq').style.display = 'none';            }
+                const form = document.querySelector('form');
+                form.innerHTML = '<label for="emailContent">Escreva o conteúdo do email:</label> <textarea id="emailContent" name="emailContent" rows="10" cols="50" placeholder="Escreva o conteúdo do email aqui..."></textarea> <button type="submit">Enviar</button>';
+                const h2 = document.querySelector('main h2');
+                h2.textContent = 'Escrever Email';
+                const span = document.querySelector('main span');
+                span.textContent = '';
+            }
         });
     });
 
@@ -72,13 +73,12 @@
     }
 
     window.onload = () => {
-        const form = document.querySelector('form.text').style.display === 'none' ? document.querySelector('form.arq') : document.querySelector('form.text');
-
+        const form = document.querySelector('form');
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
             let emailContent = '';
 
-            if (form.classList.contains('arq')) {
+            if (form.firstElementChild.getAttribute('for') === 'fileUpload') {
                 const files = document.getElementById('fileUpload').files;
                 if (files.length === 0) {
                     document.querySelector('main span').textContent = 'Por favor, selecione pelo menos um arquivo.';
@@ -89,18 +89,18 @@
                 for (const file of files) {
                     const reader = new FileReader();
                     reader.onload = async (e) => {
-                        emailContent += e.target.result + '\n';
-                        if (emailContent.split('\n').length >= files.length) {
-                            const classification = await getClassification(emailContent);
-                            document.querySelector('main span').textContent = `Classificação: ${classification}`;
-                        }
+                        emailContent += e.target.result;
+                        //const classification = await getClassification(emailContent);
+                        document.querySelector('main span').textContent = `Classificação: ${emailContent}`;
                     };
                     reader.readAsText(file);
                 }
+
             } else {
                 emailContent = document.getElementById('emailContent').value;
                 if (emailContent.trim() === '') {
-                    alert('Por favor, escreva o conteúdo do email.');
+                    document.querySelector('main span').textContent = 'Por favor, escreva um conteúdo no email.';
+                    document.querySelector('main span').style.color = 'red';
                     return;
                 }
                 const classification = await getClassification(emailContent);
