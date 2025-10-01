@@ -200,6 +200,7 @@
     });
 
     async function getClassification(emailContent) {
+        console.log("Conteúdo do email para classificação:", emailContent);
         try {
             const response = await fetch("/classifier?email="+emailContent);
 
