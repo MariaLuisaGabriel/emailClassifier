@@ -1,5 +1,5 @@
 def handler(request):
-    emailcontent = request.get("query", {}).get("email")
+    emailcontent = request.get("query", {}).get("email","vazio")
     return {
         "statusCode": 200,
         "headers": {
