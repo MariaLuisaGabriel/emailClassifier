@@ -10,7 +10,8 @@
     }
   ],
   "routes": [
+    { "src": "/style.css", "dest": "/style.css" },
     { "src": "/classify", "dest": "main.py" },
-    { "src": "/(.*)", "dest": "templates/index.html" }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
