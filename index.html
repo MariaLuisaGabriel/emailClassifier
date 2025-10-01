@@ -208,8 +208,8 @@
                 throw new Error('Not ok');
             }
 
-            const data = await response.json();
-            return data.mensagem;
+            const data = await response.text;
+            return data;
         } catch (error) {
             console.error('Erro na classificação:', error);
             return '';
