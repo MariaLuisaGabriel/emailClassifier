@@ -1,14 +1,16 @@
 {
-    "builds": [
-        {
-            "src": "main.py",
-            "use": "@vercel/python"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "main.py"
-        }
-    ]
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    { "src": "/classify", "dest": "main.py" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
