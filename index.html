@@ -208,7 +208,7 @@
                 throw new Error('Not ok');
             }
 
-            const data = await response.text;
+            const data = await response.text();
             return data;
         } catch (error) {
             console.error('Erro na classificação:', error);
