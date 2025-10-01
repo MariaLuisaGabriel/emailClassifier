@@ -1,6 +1,4 @@
-from flask import Flask, request, jsonify, render_template
-
-def receber_dados(request):
+def handler(request):
     emailcontent = request.get("query", {}).get("email")
     return {
         "statusCode": 200,
