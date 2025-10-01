@@ -5,12 +5,12 @@
       "use": "@vercel/static"
     },
     {
-      "src": "/api/**/*.py",
+      "src": "api/**/*.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "classifier.py" },
+    { "src": "/api/(.*)", "dest": "/api/$classifier.py" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
