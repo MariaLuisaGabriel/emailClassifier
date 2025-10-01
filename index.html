@@ -4,7 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Classifier</title>
-    <link rel="stylesheet" href="/style.css">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0 auto;
+            background-color: #ffffff;
+            font-family: Helvetica;
+            color: #444;
+            line-height: 1.5;
+            margin-bottom: 50px;
+            display:flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 10px;
+            text-align: center;
+            color: #c4b4b4;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: larger;
+        }
+
+        nav {
+            background-color: #2edbe7;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px
+        }
+
+        nav button {
+            color: white;
+            display: inline-block;
+            background: none;
+            border: none;
+            margin: 0;
+            padding: 0;
+            cursor: pointer
+        }
+
+        nav button:hover {
+            color: blue; /* Example: darker blue on hover */
+        }
+
+        main {
+            width: 70%;
+            padding: 25px 25px;
+            margin: 0px auto;
+            background-color: whitesmoke;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 500px) {
+            main {
+                width: 100%;
+            }
+        }
+
+        footer {
+            position: fixed;
+            height: 50px;
+            text-align: center;
+            background-color: gainsboro;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin-bottom: 0px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        form label {
+            color: #c4b4b4;
+            font-weight: bold;
+        }
+
+        form input,
+        form button {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            color: #2d2d2d;
+            background: white;
+            border: #c4b4b4 solid 1.5px;
+            border-radius: 10px;
+        }
+
+        form input{
+            margin: auto;
+        }
+
+        form button{
+            margin-top: 5px;
+        }
+
+        form input:focus,
+        form button:focus {
+            outline: none;
+            border: #6bd5dd solid 2px;
+            box-shadow: 0 0 5px #5abbc2;
+        }
+
+        form button:active {
+            background: #2edbe7;
+            color: white;
+        }
+
+        form textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            font-size: 16px;
+            resize: none;
+            box-sizing: border-box;
+            border: #c4b4b4 solid 1.5px;
+            border-radius: 5px;
+        }
+
+        form textarea:focus {
+            outline: none;
+            border: #6bd5dd solid 2px;
+            box-shadow: 0 0 5px #5abbc2;
+        }
+
+        form textarea:active {
+            outline: none;
+            border: none;
+        }
+
+        form p {
+            margin: 0 0 16px;
+        }
+
+        h2 {
+            margin: 0 0 16px;
+            color: #c4b4b4;
+        }
+    </style>
 </head>
 <body>
     <header>

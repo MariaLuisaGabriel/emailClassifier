@@ -50,15 +50,6 @@ nav button:hover {
     color: blue; /* Example: darker blue on hover */
 }
 
-nav ul {
-    padding: 0;
-    margin: 0;
-}
-
-li a:hover {
-    transform: scale(1.1);
-}
-
 main {
     width: 70%;
     padding: 25px 25px;
@@ -82,25 +73,6 @@ footer {
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
-}
-
-footer address {
-    display: flex;
-    justify-content: center;
-}
-
-address p:first-child {
-    padding-right: 20px;
-    border-right: 1px solid lightgray;
-}
-
-address p:last-child {
-    padding-left: 20px;
-}
-
-footer a:link {
-    color: #2edbe7;
-    text-decoration: none;
 }
 
 button {
@@ -164,18 +136,6 @@ form textarea:focus {
 form textarea:active {
     outline: none;
     border: none;
-}
-
-form legend {
-    font-weight: bold;
-    color: #a73939;
-    padding: 2px 5px;
-}
-
-form fieldset {
-    margin: 16px 0;
-    border-radius: 5px;
-    border: #8c0c0c solid 1.5px;
 }
 
 form p {
