@@ -5,7 +5,7 @@
       "use": "@vercel/static"
     },
     {
-      "src": "classifier.py",
+      "src": "/api/**/*.py",
       "use": "@vercel/python"
     }
   ],
