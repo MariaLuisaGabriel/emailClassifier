@@ -21,3 +21,7 @@ python classifier.py
 - "Parabéns! Hoje é seu aniversário!" Improdutivo
 - "Solicito esclarecimento quanto à solicitação de convites para reunião técnica" Produtivo
 - "Agradeço seu comparecimento no workshop de ontem, foi de relevante engrandecimento técnico e pudemos botar os comunicados em dia" Improdutivo
+
+## Sobre o Deploy do projeto
+
+Quando decidi pelos modelos que implementei, as versões gratuitas de deploy não suportaram o tamanho dos dados, portanto abri mão do deploy para produção
