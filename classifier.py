@@ -13,7 +13,7 @@ app = Flask(__name__)
 classifier = pipeline("zero-shot-classification", model="MoritzLaurer/mDeBERTa-v3-base-mnli-xnli", framework="pt")
 #classifier = pipeline("sentiment-analysis")
 
-@app.route('/classify', methods=['GET'])
+@app.route('/classifier', methods=['GET'])
 def handler():
     # dados = request.get_json()
     # texto = dados.get("texto", "")
