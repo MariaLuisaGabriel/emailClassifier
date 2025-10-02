@@ -7,7 +7,6 @@ import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 from transformers import pipeline
-import torch
 
 app = Flask(__name__)
 
