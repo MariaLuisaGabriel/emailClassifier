@@ -167,7 +167,7 @@
         <h2>Inserção de Arquivos</h2>
         <form>
             <label for="fileUpload">Selecione arquivos de email (formato .pdf ou .txt):</label>
-            <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .txt" multiple>
+            <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .txt">
             <button type="submit">Enviar</button>
         </form>
         <span></span>
@@ -183,7 +183,7 @@
         button.addEventListener('click', () => {
             if (button.textContent.includes('Inserir')) {
                 const form = document.querySelector('form');
-                form.innerHTML = '<label for="fileUpload">Selecione arquivos de email (formato .pdf ou .txt):</label> <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .txt" multiple> <button type="submit">Enviar</button>';
+                form.innerHTML = '<label for="fileUpload">Selecione arquivos de email (formato .pdf ou .txt):</label> <input type="file" id="fileUpload" name="fileUpload" accept=".pdf, .txt"> <button type="submit">Enviar</button>';
                 const h2 = document.querySelector('main h2');
                 h2.textContent = 'Inserção de Arquivos';
                 const span = document.querySelector('main span');
@@ -202,7 +202,7 @@
     async function getClassification(emailContent) {
         console.log("Conteúdo do email para classificação:", emailContent);
         try {
-            const response = await fetch("/api/classifier?email="+emailContent);
+            const response = await fetch("http://localhost:5000/api/classifier?email="+emailContent);
 
             if (!response.ok) {
                 throw new Error('Not ok');
@@ -218,9 +218,11 @@
 
     window.onload = () => {
         const form = document.querySelector('form');
+        const span = document.querySelector('main span');
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
             let emailContent = '';
+            span.textContent = 'Classificando...';
 
             if (form.firstElementChild.getAttribute('for') === 'fileUpload') {
                 const files = document.getElementById('fileUpload').files;
@@ -230,12 +232,16 @@
                     return;
                 }
 
+                i = 1;
                 for (const file of files) {
                     const reader = new FileReader();
                     reader.onload = async (e) => {
                         emailContent += e.target.result;
                         const classification = await getClassification(emailContent);
-                        document.querySelector('main span').textContent = `Classificação:\n ${classification}`;
+                        if (i === 1) span.textContent = `Classificação do Arquivo ${i}: ${classification}`;
+                        else
+                            span.textContent += "\n"+`Classificação do Arquivo ${i}: ${classification}`;
+                        i++;
                     };
                     reader.readAsText(file);
                 }
@@ -247,6 +253,8 @@
                     document.querySelector('main span').style.color = 'red';
                     return;
                 }
+                emailContent = emailContent.replace(/\n/g, ' ');
+                console.log("Conteúdo do email escrito:", emailContent);
                 const classification = await getClassification(emailContent);
                 document.querySelector('main span').textContent = `Classificação:\n ${classification}`;
             }

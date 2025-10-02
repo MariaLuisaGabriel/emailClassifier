@@ -1,0 +1,8 @@
+flask
+transformers
+datasets
+torch
+spacy
+nltk
+numpy
+re
